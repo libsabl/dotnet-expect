@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>FluentAssertions.Expectations</RootNamespace>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>true</IsPackable>
+    <IsTestProject>false</IsTestProject>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <PackageId>Sabl.Expect</PackageId>
+    <Title>Expect assertions for dotnet</Title>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Description>Test assertions for dotnet in the Expect..To syntax</Description>
+    <PackageProjectUrl>https://github.com/libsabl/expect-net</PackageProjectUrl>
+
+    <RepositoryUrl>https://github.com/libsabl/expect-net.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+
+    <!--<GeneratePackageOnBuild>true</GeneratePackageOnBuild>-->
+  </PropertyGroup>
+
+  <Import Project="../../build/assembly/Properties.proj" />
+
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" />
+  </ItemGroup>
+  
+</Project>
