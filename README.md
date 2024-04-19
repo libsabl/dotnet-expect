@@ -1,17 +1,18 @@
 # FluentAssertions.Expect
 
-Implementation of `expect(...).to` test assertion pattern for dotnet. Implemented as a thin wrapper over [FluentAssertions](https://github.com/fluentassertions/fluentassertions).
+[![codecov](https://codecov.io/github/libsabl/fluentassertions.expect/branch/main/graph/badge.svg?token=Gkk14y95yf)](https://codecov.io/github/libsabl/fluentassertions.expect)  ![tests](https://github.com/libsabl/fluentassertions.expect/actions/workflows/dotnet-test.yml/badge.svg?branch=main)
 
-### Naming and conventions
+FluentAssertions.Expect is an implementation of `expect(...).to` test assertion pattern for dotnet, implemented as a thin wrapper over [FluentAssertions](https://github.com/fluentassertions/fluentassertions).
 
-This package is not authored by the FluentAssertions team, but is structured according to FluentAssertions project conventions so that it could be easily adopted by that project if they so desired at some point in the future.  
+- [Summary](#summary) 
+- [Docs](#docs)
+- [Examples](#example)
 
 ## Summary
  
 Replaces `expression.Should()` extension syntax with `Expect(expression).To()` function call syntax
  - which avoids all the `Should()` extensions methods
  - while preserving the entire fluent syntax and API for assertions themselves
-
 
 ### Background
 
@@ -31,9 +32,13 @@ The return value of `Expect(value).To()` is identical to the return value of `va
 
 Calling FluentAssertions' extension based syntax "intrusive" is an opinion, a matter of taste. This library does not seek to sway anyone's opinion, nor to criticize the design of FluentAssertions. It simply provides an easy drop-in alternative for code authors who appreciate features of FluentAssertions but dislike the extension syntax in their own totally subjective opinion. If you or your team prefers the extension syntax, just ignore this library! All actual assertions APIs remain in FluentAssertions itself, even when using this library.
 
+### Naming and conventions
+
+This package is not authored by the FluentAssertions team, but is structured according to FluentAssertions project conventions so that it could be easily adopted by that project if they so desired at some point in the future.
+
 ## Docs
 
-The goal here is that almost no docs are needed. For all assertion APIs, see the [FluentAssertion docs](https://fluentassertions.com/). When you are reading those docs, just mentally replace `[expression].Should()` with `Expect([expression]).To()`. 
+For all assertion APIs, see the [FluentAssertion docs](https://fluentassertions.com/). When you are reading those docs, just mentally replace `[expression].Should()` with `Expect([expression]).To()`. 
 
 For the handful of other top-level extension methods provided by FluentAssertions, such as `Invoking` or `Monitor`, see [details below](#replacements). 
 
@@ -54,9 +59,7 @@ For the handful of other top-level extension methods provided by FluentAssertion
 
     > `-` ~~`expression.Invoking().Should()..`~~<br/>
     > `+` *see [Replacements](#replacements)*
-
-
-   
+ 
 ### Replacements
 
 |Verb|Extensions Syntax|Expectations Syntax|
