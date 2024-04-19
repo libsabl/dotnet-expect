@@ -1,7 +1,6 @@
 <Project>
 
   <PropertyGroup>
-    <Product>Sabl</Product>
     <Authors>Joshua Honig</Authors>
   </PropertyGroup>
 

@@ -8,7 +8,7 @@ namespace FluentAssertions.Expectations.Specs;
 public class ObjectExpectationSpecs
 {
     [Fact]
-    public void Expect_Returns_ObjectAssertions()
+    public void Expect_To_Returns_ObjectAssertions()
     {
         object objValue = 232;
 

@@ -10,13 +10,13 @@
   </PropertyGroup>
   
   <PropertyGroup>
-    <PackageId>Sabl.Expect</PackageId>
+    <PackageId>FluentAssertions.Expect</PackageId>
     <Title>Expect assertions for dotnet</Title>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Description>Test assertions for dotnet in the Expect..To syntax</Description>
-    <PackageProjectUrl>https://github.com/libsabl/expect-net</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/libsabl/fluentassertions.expect</PackageProjectUrl>
 
-    <RepositoryUrl>https://github.com/libsabl/expect-net.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/libsabl/fluentassertions.expect.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
 
     <!--<GeneratePackageOnBuild>true</GeneratePackageOnBuild>-->
