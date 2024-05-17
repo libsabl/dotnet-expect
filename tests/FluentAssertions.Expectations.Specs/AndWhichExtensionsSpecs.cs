@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿// Copyright 2024 Joshua Honig. All rights reserved.
+// Use of this source code is governed by a MIT license that can be found in the LICENSE file.
+
+using System.Collections;
 
 namespace FluentAssertions.Expectations.Specs;
 
