@@ -34,7 +34,7 @@ public static partial class Expectation
     public static Expectation<PropertyInfoSelector> Expect(PropertyInfoSelector actual) => new(actual);
 }
 
-/// <summary>Extensions to <see cref="Expectation{T}"/> about reflection-related types</summary>
+/// <summary>Extensions to <see cref="Expectation{T}"/> for reflection-related types</summary>
 [DebuggerNonUserCode]
 public static class ReflectionExpectationsExtensions
 {

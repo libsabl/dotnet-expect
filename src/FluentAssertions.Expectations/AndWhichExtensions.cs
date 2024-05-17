@@ -1,4 +1,7 @@
-﻿namespace FluentAssertions.Expectations;
+﻿// Copyright 2024 Joshua Honig. All rights reserved.
+// Use of this source code is governed by a MIT license that can be found in the LICENSE file.
+
+namespace FluentAssertions.Expectations;
 
 /// <summary>
 /// Extension methods to terminate a chain and extract the subject for further assertions
