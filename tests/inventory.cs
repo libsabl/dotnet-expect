@@ -32,8 +32,8 @@ public static Action                        Enumerating<T, TResult>(this T subje
 public static XDocumentAssertions               Should([NotNull] this XDocument actualValue) => throw null!;
 public static XElementAssertions                Should([NotNull] this XElement actualValue) => throw null!;
 public static XAttributeAssertions              Should([NotNull] this XAttribute actualValue) => throw null!;
-public static StreamAssertions                  Should([NotNull] this Stream actualValue) => throw null!;
-public static BufferedStreamAssertions          Should([NotNull] this BufferedStream actualValue) => throw null!;
+// StreamExpectations.cs     : public static StreamAssertions                  Should([NotNull] this Stream actualValue) => throw null!;
+// StreamExpectations.cs     : public static BufferedStreamAssertions          Should([NotNull] this BufferedStream actualValue) => throw null!;
 // BoolExpectations.cs       : public static BooleanAssertions                  Should(this bool actualValue) => throw null!;
 // BoolExpectations.cs       : public static NullableBooleanAssertions          Should(this bool? actualValue) => throw null!;
 public static HttpResponseMessageAssertions     Should([NotNull] this HttpResponseMessage actualValue) => throw null!;
