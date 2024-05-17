@@ -1,13 +1,15 @@
 // Inventory of extension methods to shim or replace
+
 // ============================================
-// AssertionExtensions
+//  FluentAssertions.AssertionExtensions class
 // ============================================
-public static Action                        Invoking<T>(this T subject, Action<T> action) => throw null!;
-public static Func<TResult>                 Invoking<T, TResult>(this T subject, Func<T, TResult> action) => throw null!;
-public static Func<Task>                    Awaiting<T>(this T subject, Func<T, Task> action) => throw null!;
-public static Func<Task<TResult>>           Awaiting<T, TResult>(this T subject, Func<T, Task<TResult>> action) => throw null!;
-public static Func<Task>                    Awaiting<T>(this T subject, Func<T, ValueTask> action) => throw null!;
-public static Func<Task<TResult>>           Awaiting<T, TResult>(this T subject, Func<T, ValueTask<TResult>> action) => throw null!;
+// IExpect.Invoking.cs : public static Action                        Invoking<T>(this T subject, Action<T> action) => throw null!;
+// IExpect.Invoking.cs : public static Func<TResult>                 Invoking<T, TResult>(this T subject, Func<T, TResult> action) => throw null!;
+// IExpect.Awaiting.cs : public static Func<Task>                    Awaiting<T>(this T subject, Func<T, Task> action) => throw null!;
+// IExpect.Awaiting.cs : public static Func<Task<TResult>>           Awaiting<T, TResult>(this T subject, Func<T, Task<TResult>> action) => throw null!;
+// IExpect.Awaiting.cs : public static Func<Task>                    Awaiting<T>(this T subject, Func<T, ValueTask> action) => throw null!;
+// IExpect.Awaiting.cs : public static Func<Task<TResult>>           Awaiting<T, TResult>(this T subject, Func<T, ValueTask<TResult>> action) => throw null!;
+
 public static MemberExecutionTime<T>        ExecutionTimeOf<T>(this T subject, Expression<Action<T>> action, StartTimer createTimer = null) => throw null!;
 public static ExecutionTime                 ExecutionTime(this Action action, StartTimer createTimer = null) => throw null!;
 public static ExecutionTime                 ExecutionTime(this Func<Task> action) => throw null!;
@@ -18,13 +20,13 @@ public static Action                        Enumerating(this Func<IEnumerable> e
 public static Action                        Enumerating<T>(this Func<IEnumerable<T>> enumerable) => throw null!;
 public static Action                        Enumerating<T, TResult>(this T subject, Func<T, IEnumerable<TResult>> enumerable) => throw null!;
 
-// ObjectExpectations   : public static ObjectAssertions                    Should([NotNull] this object actualValue) => throw null!;
-// FunctionExpectations : public static ActionAssertions                    Should([NotNull] this Action action) => throw null!;
-// FunctionExpectations : public static NonGenericAsyncFunctionAssertions   Should([NotNull] this Func<Task> action) => throw null!;
-// FunctionExpectations : public static GenericAsyncFunctionAssertions<T>   Should<T>([NotNull] this Func<Task<T>> action) => throw null!;
-// FunctionExpectations : public static FunctionAssertions<T>               Should<T>([NotNull] this Func<T> func) => throw null!;
-// FunctionExpectations : public static TaskCompletionSourceAssertions<T>   Should<T>(this TaskCompletionSource<T> tcs) => throw null!;
-// FunctionExpectations : public static TaskCompletionSourceAssertions      Should(this TaskCompletionSource tcs) => throw null!;
+// ObjectExpectations.cs   : public static ObjectAssertions                    Should([NotNull] this object actualValue) => throw null!;
+// FunctionExpectations.cs : public static ActionAssertions                    Should([NotNull] this Action action) => throw null!;
+// FunctionExpectations.cs : public static NonGenericAsyncFunctionAssertions   Should([NotNull] this Func<Task> action) => throw null!;
+// FunctionExpectations.cs : public static GenericAsyncFunctionAssertions<T>   Should<T>([NotNull] this Func<Task<T>> action) => throw null!;
+// FunctionExpectations.cs : public static FunctionAssertions<T>               Should<T>([NotNull] this Func<T> func) => throw null!;
+// FunctionExpectations.cs : public static TaskCompletionSourceAssertions<T>   Should<T>(this TaskCompletionSource<T> tcs) => throw null!;
+// FunctionExpectations.cs : public static TaskCompletionSourceAssertions      Should(this TaskCompletionSource tcs) => throw null!;
 
 public static AssemblyAssertions                Should([NotNull] this Assembly assembly) => throw null!;
 public static XDocumentAssertions               Should([NotNull] this XDocument actualValue) => throw null!;

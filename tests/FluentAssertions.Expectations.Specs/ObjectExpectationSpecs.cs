@@ -18,5 +18,9 @@ public class ObjectExpectationSpecs
         // Assert
         Expect(assertions).To().BeOfType<ObjectAssertions>();
         assertions.Be(232);
+         
+        // Verify API equivalency
+        var shouldResult = objValue.Should();
+        Expect(assertions).To().BeSameAssertionAs(shouldResult);
     }
 }

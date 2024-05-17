@@ -2,6 +2,7 @@
 // Use of this source code is governed by a MIT license that can be found in the LICENSE file.
 
 using FluentAssertions.Specialized;
+using System;
 
 namespace FluentAssertions.Expectations.Specs;
 
@@ -20,6 +21,10 @@ public class FunctionExpectationSpecs
         // Assert
         Expect(assertions).To().BeOfType<ActionAssertions>();
         assertions.NotThrow();
+
+        // Verify API equivalency
+        var shouldResult = action.Should();
+        Expect(assertions).To().BeSameAssertionAs(shouldResult);
     }
 
     [Fact]
@@ -33,6 +38,10 @@ public class FunctionExpectationSpecs
         // Assert
         Expect(assertions).To().BeOfType<NonGenericAsyncFunctionAssertions>();
         await assertions.NotThrowAsync();
+
+        // Verify API equivalency
+        var shouldResult = func.Should();
+        Expect(assertions).To().BeSameAssertionAs(shouldResult);
     }
 
     [Fact]
@@ -46,6 +55,10 @@ public class FunctionExpectationSpecs
         // Assert
         Expect(assertions).To().BeOfType<GenericAsyncFunctionAssertions<int>>();
         await assertions.NotThrowAsync();
+
+        // Verify API equivalency
+        var shouldResult = func.Should();
+        Expect(assertions).To().BeSameAssertionAs(shouldResult);
     }
 
     [Fact]
@@ -59,6 +72,10 @@ public class FunctionExpectationSpecs
         // Assert
         Expect(assertions).To().BeOfType<FunctionAssertions<int>>();
         assertions.NotThrow();
+
+        // Verify API equivalency
+        var shouldResult = func.Should();
+        Expect(assertions).To().BeSameAssertionAs(shouldResult);
     }
 
     [Fact]
@@ -75,6 +92,10 @@ public class FunctionExpectationSpecs
         // Assert
         Expect(assertions).To().BeOfType<TaskCompletionSourceAssertions<int>>();
         await assertions.CompleteWithinAsync(TimeSpan.FromMilliseconds(1));
+
+        // Verify API equivalency
+        var shouldResult = tcs.Should();
+        Expect(assertions).To().BeSameAssertionAs(shouldResult);
     }
 
     [Fact]
@@ -91,5 +112,9 @@ public class FunctionExpectationSpecs
         // Assert
         Expect(assertions).To().BeOfType<TaskCompletionSourceAssertions>();
         await assertions.CompleteWithinAsync(TimeSpan.FromMilliseconds(1));
+
+        // Verify API equivalency
+        var shouldResult = tcs.Should();
+        Expect(assertions).To().BeSameAssertionAs(shouldResult);
     }
 }
