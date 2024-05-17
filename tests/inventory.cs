@@ -34,8 +34,8 @@ public static XElementAssertions                Should([NotNull] this XElement a
 public static XAttributeAssertions              Should([NotNull] this XAttribute actualValue) => throw null!;
 public static StreamAssertions                  Should([NotNull] this Stream actualValue) => throw null!;
 public static BufferedStreamAssertions          Should([NotNull] this BufferedStream actualValue) => throw null!;
-public static BooleanAssertions                 Should(this bool actualValue) => throw null!;
-public static NullableBooleanAssertions         Should(this bool? actualValue) => throw null!;
+// BoolExpectations.cs     : public static BooleanAssertions                 Should(this bool actualValue) => throw null!;
+// BoolExpectations.cs     : public static NullableBooleanAssertions         Should(this bool? actualValue) => throw null!;
 public static HttpResponseMessageAssertions     Should([NotNull] this HttpResponseMessage actualValue) => throw null!;
 // GuidExpectations.cs     : public static GuidAssertions                    Should(this Guid actualValue) => throw null!;
 // GuidExpectations.cs     : public static NullableGuidAssertions            Should(this Guid? actualValue) => throw null!;
