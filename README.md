@@ -144,3 +144,40 @@ Expect(xGroup).To().HaveElement("section").As(out var xSection);  // now asserti
 Expect(xSection).To().HaveAttribute("version").As(out var xAttr); // now asserting about another XElement
 Expect(xAttr.Value).To().Be("11");                                // now asserting about XAttribute
 ```
+
+## Example
+
+Extended comparison using examples included in FluentAssertions docs.
+
+#### Before
+
+```cs
+// Examples from https://fluentassertions.com
+using FluentAssertions;
+ 
+string actual = "ABCDEFGHI";
+actual.Should().StartWith("AB").And.EndWith("HI").And.Contain("EF").And.HaveLength(9);
+
+IEnumerable<int> numbers = new[] { 1, 2, 3 };
+numbers.Should().OnlyContain(n => n > 0);
+numbers.Should().HaveCount(4, "because we thought we put four items in the collection");
+
+dictionary.Should().ContainValue(myClass).Which.SomeProperty.Should().BeGreaterThan(0);
+```
+
+#### After
+
+```cs
+using FluentAssertions.Expectations;
+using static FluentAssertions.Expectations.Expectation;
+ 
+string actual = "ABCDEFGHI";
+Expect(actual).To().StartWith("AB").And.EndWith("HI").And.Contain("EF").And.HaveLength(9);
+
+IEnumerable<int> numbers = new[] { 1, 2, 3 };
+Expect(numbers).To().OnlyContain(n => n > 0);
+Expect(numbers).To().HaveCount(4, "because we thought we put four items in the collection");
+
+Expect(dictionary).To().ContainValue(myClass).As(out var value);
+Expect(value.SomeProperty).To().BeGreaterThan(0);
+```

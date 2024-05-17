@@ -10,7 +10,7 @@ public class DateTimeExpectationsSpecs
     [Fact]
     public void Expect_To_Returns_DateTimeAssertions()
     {
-        DateTime dateTimeValue = new DateTime(1970, 01, 01, 12, 34, 56, 789);
+        DateTime dateTimeValue = new(1970, 01, 01, 12, 34, 56, 789);
 
         // Act: We are testing Expect(...).To() itself
         var assertions = Expect(dateTimeValue).To();
@@ -44,7 +44,7 @@ public class DateTimeExpectationsSpecs
     [Fact]
     public void Expect_To_Returns_DateTimeOffsetAssertions()
     {
-        DateTimeOffset dateTimeOffsetValue = new DateTimeOffset(1970, 01, 01, 12, 34, 56, 789, TimeSpan.Zero);
+        DateTimeOffset dateTimeOffsetValue = new(1970, 01, 01, 12, 34, 56, 789, TimeSpan.Zero);
 
         // Act: We are testing Expect(...).To() itself
         var assertions = Expect(dateTimeOffsetValue).To();
@@ -78,7 +78,7 @@ public class DateTimeExpectationsSpecs
     [Fact]
     public void Expect_To_Returns_DateOnlyAssertions()
     {
-        DateOnly dateOnlyValue = new DateOnly(1970, 01, 01);
+        DateOnly dateOnlyValue = new(1970, 01, 01);
 
         // Act: We are testing Expect(...).To() itself
         var assertions = Expect(dateOnlyValue).To();
@@ -112,7 +112,7 @@ public class DateTimeExpectationsSpecs
     [Fact]
     public void Expect_To_Returns_TimeOnlyAssertions()
     {
-        TimeOnly timeOnlyValue = new TimeOnly(12, 34, 56, 789);
+        TimeOnly timeOnlyValue = new(12, 34, 56, 789);
 
         // Act: We are testing Expect(...).To() itself
         var assertions = Expect(timeOnlyValue).To();
