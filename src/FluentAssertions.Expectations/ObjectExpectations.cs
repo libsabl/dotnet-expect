@@ -19,6 +19,12 @@ public class ObjectExpectation(object? subject) : Expectation<object?>(subject) 
 [DebuggerNonUserCode]
 public static class ObjectExpectationExtensions
 {
+    /*
+     * See Should() overload:
+     * 
+     * object : https://github.com/fluentassertions/fluentassertions/blob/6.12.0/Src/FluentAssertions/AssertionExtensions.cs#L282
+     */
+
     /// <summary>Compose assertions about the <see cref="object"/> subject</summary>
     public static ObjectAssertions To(this ObjectExpectation expectation)
        => expectation.Subject.Should();

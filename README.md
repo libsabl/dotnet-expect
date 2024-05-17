@@ -2,17 +2,29 @@
 
 [![codecov](https://codecov.io/github/libsabl/fluentassertions.expect/branch/main/graph/badge.svg?token=Gkk14y95yf)](https://codecov.io/github/libsabl/fluentassertions.expect)  ![tests](https://github.com/libsabl/fluentassertions.expect/actions/workflows/dotnet-test.yml/badge.svg?branch=main)
 
-FluentAssertions.Expect is an implementation of `expect(...).to` test assertion pattern for dotnet, implemented as a thin wrapper over [FluentAssertions](https://github.com/fluentassertions/fluentassertions).
+FluentAssertions.Expect provides the `expect(...).to` test assertion pattern for dotnet, implemented as a thin wrapper over [FluentAssertions](https://github.com/fluentassertions/fluentassertions). This provides a syntax familiar in other languages such as Jest or Chai for Node, while also eliminating the [intrusive](#opinions) extension methods that FluentAssertions defines in the base `FluentAssertions` namespace.
 
 - [Summary](#summary) 
 - [Docs](#docs)
 - [Examples](#example)
 
+## TLDR
+
+```cs
+// before
+someValue.Should().BeGreaterThan(12);
+
+// after
+Expect(someValue).To().BeGreaterThan(12);
+```
+
+Other [replacements](#replacements) and [examples](#example) below.
+
 ## Summary
  
 Replaces `expression.Should()` extension syntax with `Expect(expression).To()` function call syntax
- - which avoids all the `Should()` extensions methods
- - while preserving the entire fluent syntax and API for assertions themselves
+ - which avoids all the `Should()` and other extension methods
+ - while preserving the fluent syntax and API for assertions themselves
 
 ### Background
 
@@ -20,7 +32,7 @@ Replaces `expression.Should()` extension syntax with `Expect(expression).To()` f
 
 FluentAssertions' root `value.Should()...` pattern requires [defining extension methods](https://github.com/fluentassertions/fluentassertions/blob/develop/Src/FluentAssertions/AssertionExtensions.cs) on numerous types, including `System.Object` itself. 
 
-Many developers find this pattern intrusive. When they are writing tests, they do not want to see test framework extension methods present in the member listing on every possible expression.
+Some developers find this pattern intrusive. When they are writing tests, they do not want to see test framework extension methods present in the member listing on every possible expression.
 
 And yet, the vast majority of FluentAssertions' actual API does not depend on the root `Should(...)` extension methods. Rather, the substance of the the actual fluent assertions are defined on the types which are _returned_ from the overloads of `Should()`, such as [`ObjectAssertions`](https://github.com/fluentassertions/fluentassertions/blob/develop/Src/FluentAssertions/Primitives/ObjectAssertions.cs) or [`NullableBooleanAssertions`](https://github.com/fluentassertions/fluentassertions/blob/develop/Src/FluentAssertions/Primitives/NullableBooleanAssertions.cs).
 
@@ -48,7 +60,7 @@ For the handful of other top-level extension methods provided by FluentAssertion
  
     > `-` ~~`using FluentAssertions`~~<br/>
     > `+` `using FluentAssertions.Expectations`<br/>
-    > `+` `using FluentAssertions.Expectations.Expectation`
+    > `+` `using static FluentAssertions.Expectations.Expectation`
 
 2. Replace Should with Expect..To
 
@@ -60,19 +72,6 @@ For the handful of other top-level extension methods provided by FluentAssertion
     > `-` ~~`expression.Invoking().Should()..`~~<br/>
     > `+` *see [Replacements](#replacements)*
  
-### Replacements
-
-|Verb|Extensions Syntax|Expectations Syntax|
-|-|-|-|
-|Should|`expression.Should()`|`Expect(expression).To()`|
-|Invoking|`expression.Invoking(action).Should()`|`Expect().Invoking(expression, action).To()`|
-|Awaiting|`expression.Awaiting(action).Should()`|`Expect().Awaiting(expression, action).To()`|
-|ExecutionTimeOf|`expression.ExecutionTimeOf(action).Should()`|`Expect().ExecutionTimeOf(expression, action).To()`|
-|ExecutionTime|`action.ExecutionTime().Should()`|`Expect().ExecutionTime(action).To()`|
-|Enumerating|`func.Enumerating().Should()`|`Expect().Enumerating(func).To()`|
-|Monitor|`using var monitoredSubject = subject.Monitor();`<br/>`monitoredSubject.Should().Raise(...);`|`using var monitoredSubject = Expect().Monitor(subject);`<br/>`Expect(monitoredSubject).To().Raise(...);`|
-|As|`value.As<TTarget>().Should()`|`as` Language keyword: `Expect(value as TTarget).To()`|
-
 ### Mechanics
 
 #### Don't import `FluentAssertions`
@@ -86,57 +85,11 @@ Instead, import the `FluentAssertions.Expectations` namespace. This namespace in
  
 All overloads of the static `Expect` method are defined on the static class `FluentAssertions.Expectations.Expectation`. If you import this class statically as shown in the examples [above](#migrating-from-fluentassertions-should-syntax), then your code can use the `Expect` function directly.
 
-## Example
+### Replacements
 
-Assuming you have [updated your using statements](#migrating-from-fluentassertions-should-syntax), you can simply replace any instance of `[expression].Should()` with `Expect([expression]).To()`.
-
-Replacements for other extensions like `Invoking` and `ExecutionTime` can be chained to a call to `Expect()` with no arguments:
-
-```cs
-Expect().Invoking(subject, action).To()...
-Expect().Awaiting(subject, action).To()...
-Expect().ExecutionTime(() => ... ).To()...
-```
-
-#### Before
-
-```cs
-// Examples from https://fluentassertions.com
-using FluentAssertions;
- 
-string actual = "ABCDEFGHI";
-actual.Should().StartWith("AB").And.EndWith("HI").And.Contain("EF").And.HaveLength(9);
-
-IEnumerable<int> numbers = new[] { 1, 2, 3 };
-numbers.Should().OnlyContain(n => n > 0);
-numbers.Should().HaveCount(4, "because we thought we put four items in the collection");
-
-dictionary.Should().ContainValue(myClass).Which.SomeProperty.Should().BeGreaterThan(0);
-someObject.Should().BeOfType<Exception>().Which.Message.Should().Be("Other Message");
-xDocument.Should().HaveElement("child").Which.Should().BeOfType<XElement>().And.HaveAttribute("attr", "1");
-
-Action someAction = () => Thread.Sleep(100);
-someAction.ExecutionTime().Should().BeLessThanOrEqualTo(200.Milliseconds());
-```
-
-#### After
-
-```cs
-using static FluentAssertions.Expectations;
-// Note the static keyword. Expectation is a static class which provides the static method Expect()
-using static FluentAssertions.Expectations.Expectation;
- 
-string actual = "ABCDEFGHI";
-Expect(actual).To().StartWith("AB").And.EndWith("HI").And.Contain("EF").And.HaveLength(9);
-
-IEnumerable<int> numbers = new[] { 1, 2, 3 };
-Expect(numbers).To().OnlyContain(n => n > 0);
-Expect(numbers).To().HaveCount(4, "because we thought we put four items in the collection");
-
-Expect(dictionary).To().ContainValue(myClass).Which.SomeProperty.Should().BeGreaterThan(0);
-Expect(someObject).To().BeOfType<Exception>().Which.Message.Should().Be("Other Message");
-Expect(xDocument).To().HaveElement("child").Which.Should().BeOfType<XElement>().And.HaveAttribute("attr", "1");
-
-Action someAction = () => Thread.Sleep(100);
-Expect().ExecutionTime(someAction).To().BeLessThanOrEqualTo(200.Milliseconds());
-```
+|Verb|Extensions Syntax|Expectations Syntax|
+|-|-|-|
+|Should()|`expression.Should()`|`Expect(expression).To()`|
+|Invoking()|`expression.Invoking(action).Should()`|`Expect().Invoking(expression, action).To()`|
+|Awaiting()|`expression.Awaiting(action).Should()`|`Expect().Awaiting(expression, action).To()`|
+|As()|`value.As<TTarget>().Should()`|`as` Language keyword: `Expect(value as TTarget).To()`|
