@@ -37,8 +37,8 @@ public static BufferedStreamAssertions          Should([NotNull] this BufferedSt
 public static BooleanAssertions                 Should(this bool actualValue) => throw null!;
 public static NullableBooleanAssertions         Should(this bool? actualValue) => throw null!;
 public static HttpResponseMessageAssertions     Should([NotNull] this HttpResponseMessage actualValue) => throw null!;
-public static GuidAssertions                    Should(this Guid actualValue) => throw null!;
-public static NullableGuidAssertions            Should(this Guid? actualValue) => throw null!;
+// GuidExpectations.cs     : public static GuidAssertions                    Should(this Guid actualValue) => throw null!;
+// GuidExpectations.cs     : public static NullableGuidAssertions            Should(this Guid? actualValue) => throw null!;
 public static GenericCollectionAssertions<T>    Should<T>([NotNull] this IEnumerable<T> actualValue) => throw null!;
 public static StringCollectionAssertions        Should([NotNull] this IEnumerable<string> @this) => throw null!;
 public static GenericDictionaryAssertions<IDictionary<TKey, TValue>, TKey, TValue> Should<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> actualValue) => throw null!;
@@ -75,7 +75,7 @@ public static ComparableTypeAssertions<T>       Should<T>([NotNull] this ICompar
 // NumericExpectations.cs : public static NullableNumericAssertions<float>   Should(this float? actualValue) => throw null!;
 // NumericExpectations.cs : public static NumericAssertions<double>          Should(this double actualValue) => throw null!;
 // NumericExpectations.cs : public static NullableNumericAssertions<double>  Should(this double? actualValue) => throw null!;
-public static StringAssertions                  Should([NotNull] this string actualValue) => throw null!;
+// StringExpectations.cs  : public static StringAssertions                  Should([NotNull] this string actualValue) => throw null!;
 public static SimpleTimeSpanAssertions          Should(this TimeSpan actualValue) => throw null!;
 public static NullableSimpleTimeSpanAssertions  Should(this TimeSpan? actualValue) => throw null!;
 public static TypeAssertions                    Should([NotNull] this Type subject) => throw null!;
