@@ -11,7 +11,8 @@ internal static class AssertionsExpectations
     public static AndConstraint<ObjectAssertions> BeSameAssertionAs(
         this ObjectAssertions wrappedAssertion,
         object expectedAssertion,
-        bool unwrapDelegates = false)
+        bool unwrapDelegates = false,
+        string? subjectMemberName = null)
     {
         // Input wrappedAssertion is an ObjectAssertion _about_ some other assertion object
         var originalAssertion = wrappedAssertion.Subject;
@@ -19,8 +20,8 @@ internal static class AssertionsExpectations
         originalAssertion.Should().BeOfType(expectedType); // Assertion itself should be same as expected assertion type
 
         // And they should be about the same subject
-        var originalSubject = GetSubject(originalAssertion.GetType(), originalAssertion);
-        var expectedSubject = GetSubject(expectedType, expectedAssertion);
+        var originalSubject = GetSubject(originalAssertion.GetType(), originalAssertion, subjectMemberName);
+        var expectedSubject = GetSubject(expectedType, expectedAssertion, subjectMemberName);
 
         if (unwrapDelegates) {
             if (expectedSubject is Delegate delExpected) {
@@ -35,18 +36,20 @@ internal static class AssertionsExpectations
             }
         }
 
-        return originalSubject.Should().Be(expectedSubject);
+        return originalSubject.Should().BeEquivalentTo(expectedSubject);
     }
 
-
-    private static object? GetSubject(Type type, object assertion)
+    private static object? GetSubject(Type type, object assertion, string? subjectMemberName = null)
     {
-        var subjectProp = type.GetProperty("Subject", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        var propName = subjectMemberName ?? "Subject";
+        var fldName = subjectMemberName ?? "subject";
+
+        var subjectProp = type.GetProperty(propName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
         if (subjectProp != null) return subjectProp.GetValue(assertion);
 
-        var subjectField = type.GetField("subject", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        var subjectField = type.GetField(fldName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
         if (subjectField != null) return subjectField.GetValue(assertion);
 
-        throw new InvalidOperationException($"No Subject property or subject field found on type {type}");
+        throw new InvalidOperationException($"No '{propName}' property or '{fldName}' field found on type {type}");
     }
 }
