@@ -13,7 +13,7 @@
 public static MemberExecutionTime<T>        ExecutionTimeOf<T>(this T subject, Expression<Action<T>> action, StartTimer createTimer = null) => throw null!;
 public static ExecutionTime                 ExecutionTime(this Action action, StartTimer createTimer = null) => throw null!;
 public static ExecutionTime                 ExecutionTime(this Func<Task> action) => throw null!;
-public static ExecutionTimeAssertions           Should(this ExecutionTime executionTime) => throw null!;
+public static ExecutionTimeAssertions         -> Should(this ExecutionTime executionTime) => throw null!;
 public static IMonitor<T>                   Monitor<T>(this T eventSource, Func<DateTime> utcNow = null) => throw null!;
 
 public static Action                        Enumerating(this Func<IEnumerable> enumerable) => throw null!;
