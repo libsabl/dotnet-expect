@@ -161,6 +161,8 @@ actual.Should().StartWith("AB").And.EndWith("HI").And.Contain("EF").And.HaveLeng
 IEnumerable<int> numbers = new[] { 1, 2, 3 };
 numbers.Should().OnlyContain(n => n > 0);
 numbers.Should().HaveCount(4, "because we thought we put four items in the collection");
+
+dictionary.Should().ContainValue(myClass).Which.SomeProperty.Should().BeGreaterThan(0);
 ```
 
 #### After
@@ -175,4 +177,7 @@ Expect(actual).To().StartWith("AB").And.EndWith("HI").And.Contain("EF").And.Have
 IEnumerable<int> numbers = new[] { 1, 2, 3 };
 Expect(numbers).To().OnlyContain(n => n > 0);
 Expect(numbers).To().HaveCount(4, "because we thought we put four items in the collection");
+
+Expect(dictionary).To().ContainValue(myClass).As(out var value);
+Expect(value.SomeProperty).To().BeGreaterThan(0);
 ```

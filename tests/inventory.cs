@@ -41,9 +41,9 @@ public static HttpResponseMessageAssertions     Should([NotNull] this HttpRespon
 // GuidExpectations.cs       : public static NullableGuidAssertions            Should(this Guid? actualValue) => throw null!;
 // CollectionExpectations.cs : public static GenericCollectionAssertions<T>    Should<T>([NotNull] this IEnumerable<T> actualValue) => throw null!;
 // CollectionExpectations.cs : public static StringCollectionAssertions        Should([NotNull] this IEnumerable<string> @this) => throw null!;
-public static GenericDictionaryAssertions<IDictionary<TKey, TValue>, TKey, TValue> Should<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> actualValue) => throw null!;
-public static GenericDictionaryAssertions<IEnumerable<KeyValuePair<TKey, TValue>>, TKey, TValue> Should<TKey, TValue>([NotNull] this IEnumerable<KeyValuePair<TKey, TValue>> actualValue) => throw null!;
-public static GenericDictionaryAssertions<TCollection, TKey, TValue> Should<TCollection, TKey, TValue>([NotNull] this TCollection actualValue) where TCollection : IEnumerable<KeyValuePair<TKey, TValue>> => throw null!;
+// DictionaryExpectations.cs : public static GenericDictionaryAssertions<IDictionary<TKey, TValue>, TKey, TValue> Should<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> actualValue) => throw null!;
+// DictionaryExpectations.cs : public static GenericDictionaryAssertions<IEnumerable<KeyValuePair<TKey, TValue>>, TKey, TValue> Should<TKey, TValue>([NotNull] this IEnumerable<KeyValuePair<TKey, TValue>> actualValue) => throw null!;
+// DictionaryExpectations.cs : public static GenericDictionaryAssertions<TCollection, TKey, TValue> Should<TCollection, TKey, TValue>([NotNull] this TCollection actualValue) where TCollection : IEnumerable<KeyValuePair<TKey, TValue>> => throw null!;
 // DateTimeExpectations.cs   : public static DateTimeAssertions                Should(this DateTime actualValue) => throw null!;
 // DateTimeExpectations.cs   : public static DateTimeOffsetAssertions          Should(this DateTimeOffset actualValue) => throw null!;
 // DateTimeExpectations.cs   : public static NullableDateTimeAssertions        Should(this DateTime? actualValue) => throw null!;

@@ -24,4 +24,22 @@ public class ExampleSpecs
             Expect(numbers).To().HaveCount(4, "because we thought we put four items in the collection");
         }).To().Throw<XunitException>();
     }
+
+    [Fact]
+    public void Dictionary_Contains_Example_Works()
+    {
+        var myClass = new MyClass() { SomeProperty = 22 };
+        var dictionary = new Dictionary<string, MyClass> {
+            ["a"] = myClass
+        };
+
+        Expect(dictionary).To().ContainValue(myClass).As(out var value);
+        Expect(value.SomeProperty).To().BeGreaterThan(0);
+    }
+
+    private class MyClass
+    {
+        public int SomeProperty { get; set; }
+    }
 }
+
