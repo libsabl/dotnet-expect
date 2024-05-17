@@ -38,6 +38,19 @@ public static partial class Expectation
 [DebuggerNonUserCode]
 public static class ReflectionExpectationsExtensions
 {
+    /*
+    * See Should() overloads:
+    * 
+    * Assembly             : https://github.com/fluentassertions/fluentassertions/blob/6.12.0/Src/FluentAssertions/AssertionExtensions.cs#L175
+    * Type                 : https://github.com/fluentassertions/fluentassertions/blob/6.12.0/Src/FluentAssertions/AssertionExtensions.cs#L779
+    * TypeSelector         : https://github.com/fluentassertions/fluentassertions/blob/6.12.0/Src/FluentAssertions/AssertionExtensions.cs#L790
+    * ConstructorInfo      : https://github.com/fluentassertions/fluentassertions/blob/6.12.0/Src/FluentAssertions/AssertionExtensions.cs#L803
+    * MethodInfo           : https://github.com/fluentassertions/fluentassertions/blob/6.12.0/Src/FluentAssertions/AssertionExtensions.cs#L813
+    * MethodInfoSelector   : https://github.com/fluentassertions/fluentassertions/blob/6.12.0/Src/FluentAssertions/AssertionExtensions.cs#L825
+    * PropertyInfo         : https://github.com/fluentassertions/fluentassertions/blob/6.12.0/Src/FluentAssertions/AssertionExtensions.cs#L838
+    * PropertyInfoSelector : https://github.com/fluentassertions/fluentassertions/blob/6.12.0/Src/FluentAssertions/AssertionExtensions.cs#L850
+    */
+
     /// <summary>Compose assertions about the <see cref="Assembly"/> subject</summary>
     public static AssemblyAssertions To(this Expectation<Assembly> expectation)
         => expectation.Subject.Should();

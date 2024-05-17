@@ -15,11 +15,17 @@ public static partial class Expectation
     public static Expectation<BufferedStream> Expect(BufferedStream actual) => new(actual);
 }
 
-
 /// <summary>Extensions to <see cref="Expectation{T}"/> for stream types</summary>
 [DebuggerNonUserCode]
 public static class StreamExpectationExtensions
 {
+    /*
+    * See Should() overloads:
+    * 
+    * Stream         : https://github.com/fluentassertions/fluentassertions/blob/6.12.0/Src/FluentAssertions/AssertionExtensions.cs#L215
+    * BufferedStream : https://github.com/fluentassertions/fluentassertions/blob/6.12.0/Src/FluentAssertions/AssertionExtensions.cs#L225
+    */
+
     /// <summary>Compose assertions about the <see cref="Stream"/> subject</summary>
     public static StreamAssertions To(this Expectation<Stream> expectation)
         => expectation.Subject.Should();

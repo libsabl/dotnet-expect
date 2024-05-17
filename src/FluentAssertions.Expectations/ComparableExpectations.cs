@@ -15,6 +15,12 @@ public static partial class Expectation
 [DebuggerNonUserCode]
 public static class ComparableExpectationExtensions
 {
+    /*
+    * See Should() overload:
+    * 
+    * IComparable<T> : https://github.com/fluentassertions/fluentassertions/blob/6.12.0/Src/FluentAssertions/AssertionExtensions.cs#L519
+    */
+
     /// <summary>Compose assertions about the <see cref="IComparable{T}"/> subject</summary>
     public static ComparableTypeAssertions<T> To<T>(this Expectation<IComparable<T>> expectation)
         => expectation.Subject.Should();

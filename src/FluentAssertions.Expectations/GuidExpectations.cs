@@ -19,7 +19,7 @@ public static partial class Expectation
 public static class GuidExpectationExtensions
 {
     /*
-     * See Should() overload:
+     * See Should() overloads:
      * 
      * Guid  : https://github.com/fluentassertions/fluentassertions/blob/6.12.0/Src/FluentAssertions/AssertionExtensions.cs#L322
      * Guid? : https://github.com/fluentassertions/fluentassertions/blob/6.12.0/Src/FluentAssertions/AssertionExtensions.cs#L332

@@ -19,7 +19,7 @@ public static partial class Expectation
 public static class BoolExpectationExtensions
 {
     /*
-     * See Should() overload:
+     * See Should() overloads:
      * 
      * bool  : https://github.com/fluentassertions/fluentassertions/blob/6.12.0/Src/FluentAssertions/AssertionExtensions.cs#L292
      * bool? : https://github.com/fluentassertions/fluentassertions/blob/6.12.0/Src/FluentAssertions/AssertionExtensions.cs#L302
