@@ -93,3 +93,54 @@ All overloads of the static `Expect` method are defined on the static class `Flu
 |Invoking()|`expression.Invoking(action).Should()`|`Expect().Invoking(expression, action).To()`|
 |Awaiting()|`expression.Awaiting(action).Should()`|`Expect().Awaiting(expression, action).To()`|
 |As()|`value.As<TTarget>().Should()`|`as` Language keyword: `Expect(value as TTarget).To()`|
+|Which, Subject|`..BeOfType<T>().Which.Should()..`|See [Replacing chains that use Which, Subject](#replacing-chains-that-use-which-subject)|
+
+### Replacing chains that use Which, Subject
+
+FluentAssertions allows chaining indefinitely long sequences of cascading assertions via the `Which` and `Subject` properties of some assertion types. `Which` and `Subject` are synonyms and return the same value. These properties are present when the previous assertion implicitly extracts a different value from the original subject.
+
+The philosophy of the Expect pattern here is to make the context switch explicit by starting a new assertion with Expect. However, a convenience method `As(out _)` allows a semantically fluid way of terminating the previous asserting by creating a new variable to hold the derived value, using the C# `out var <variable>` syntax to declare a new variable inline. See the following sections for examples.
+
+#### Example: Extracting a different type
+
+BeOfType&lt;T&gt; returns the same underlying value as the original subject, but statically casts it to a different type, and throws a test failure if the type cast fails. This allows making further assertions that can't be applied to the original type, but can be applied to the asserted type. In the example below, the original value is simply an `object`, but by asserting that the value is specifically an `int`, the test code can make a further assertion about the numeric value of that `int`.
+
+FluentAssertions style chaining with `Which`:
+
+```cs
+ object objValue = someFunc();
+ objValue.Should().BeOfType<int>().Which.Should().BeGreaterThan(11); 
+"|<----- subject is object ----->| |<---- now subject is int ---->|"
+```
+
+Expect style extracting derived values with `As(out var _)`;
+
+```cs
+object objValue = someFunc();
+Expect(objValue).To().BeOfType<int>().As(out var intValue);  // subject is object
+Expect(intValue).To().BeGreaterThan(11);                     // now subject is int
+```
+
+#### Example: Extracting derived value
+
+Other assertions for certain complex types return a descendant, parent, or other related value to the original subject. In the example below HaveElement and HaveAttribute are used to incrementally navigate an XML document, making assertions along the way.
+
+FluentAssertions style chaining with `Which`:
+
+```cs
+XDocument myDoc = getSomeXml();
+myDoc.Should().HaveElement("group")           // asserting about XDocument
+    .Which.Should().HaveElement("section")    // now asserting about XElement
+    .Which.Should().HaveAttribute("version")  // now asserting about another XElement
+    .Which.Value.Should().Be("11");           // now asserting about XAttribute
+```
+
+Expect style extracting derived values with `As(out var _)`;
+
+```cs
+XDocument myDoc = getSomeXml();
+Expect(myDoc).To().HaveElement("group").As(out var xGroup);       // asserting about XDocument
+Expect(xGroup).To().HaveElement("section").As(out var xSection);  // now asserting about XElement
+Expect(xSection).To().HaveAttribute("version").As(out var xAttr); // now asserting about another XElement
+Expect(xAttr.Value).To().Be("11");                                // now asserting about XAttribute
+```
