@@ -29,9 +29,9 @@ public static Action                        Enumerating<T, TResult>(this T subje
 // FunctionExpectations.cs : public static TaskCompletionSourceAssertions       Should(this TaskCompletionSource tcs) => throw null!;
 
 // ReflectionExpectations.cs : public static AssemblyAssertions                 Should([NotNull] this Assembly assembly) => throw null!;
-public static XDocumentAssertions               Should([NotNull] this XDocument actualValue) => throw null!;
-public static XElementAssertions                Should([NotNull] this XElement actualValue) => throw null!;
-public static XAttributeAssertions              Should([NotNull] this XAttribute actualValue) => throw null!;
+// XmlExpectations.cs        : public static XDocumentAssertions                Should([NotNull] this XDocument actualValue) => throw null!;
+// XmlExpectations.cs        : public static XElementAssertions                 Should([NotNull] this XElement actualValue) => throw null!;
+// XmlExpectations.cs        : public static XAttributeAssertions               Should([NotNull] this XAttribute actualValue) => throw null!;
 // StreamExpectations.cs     : public static StreamAssertions                   Should([NotNull] this Stream actualValue) => throw null!;
 // StreamExpectations.cs     : public static BufferedStreamAssertions           Should([NotNull] this BufferedStream actualValue) => throw null!;
 // BoolExpectations.cs       : public static BooleanAssertions                  Should(this bool actualValue) => throw null!;
