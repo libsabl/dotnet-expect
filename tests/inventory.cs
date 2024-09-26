@@ -28,7 +28,7 @@ public static Action                        Enumerating<T, TResult>(this T subje
 // FunctionExpectations.cs : public static TaskCompletionSourceAssertions<T>   Should<T>(this TaskCompletionSource<T> tcs) => throw null!;
 // FunctionExpectations.cs : public static TaskCompletionSourceAssertions      Should(this TaskCompletionSource tcs) => throw null!;
 
-public static AssemblyAssertions                Should([NotNull] this Assembly assembly) => throw null!;
+// ReflectionExpectations.cs : public static AssemblyAssertions                Should([NotNull] this Assembly assembly) => throw null!;
 public static XDocumentAssertions               Should([NotNull] this XDocument actualValue) => throw null!;
 public static XElementAssertions                Should([NotNull] this XElement actualValue) => throw null!;
 public static XAttributeAssertions              Should([NotNull] this XAttribute actualValue) => throw null!;
@@ -78,10 +78,10 @@ public static ComparableTypeAssertions<T>       Should<T>([NotNull] this ICompar
 // StringExpectations.cs     : public static StringAssertions                  Should([NotNull] this string actualValue) => throw null!;
 // DateTimeExpectations.cs   : public static SimpleTimeSpanAssertions          Should(this TimeSpan actualValue) => throw null!;
 // DateTimeExpectations.cs   : public static NullableSimpleTimeSpanAssertions  Should(this TimeSpan? actualValue) => throw null!;
-public static TypeAssertions                    Should([NotNull] this Type subject) => throw null!;
-public static TypeSelectorAssertions            Should(this TypeSelector typeSelector) => throw null!;
-public static ConstructorInfoAssertions         Should([NotNull] this ConstructorInfo constructorInfo) => throw null!;
-public static MethodInfoAssertions              Should([NotNull] this MethodInfo methodInfo) => throw null!;
-public static MethodInfoSelectorAssertions      Should(this MethodInfoSelector methodSelector) => throw null!;
-public static PropertyInfoAssertions            Should([NotNull] this PropertyInfo propertyInfo) => throw null!;
-public static PropertyInfoSelectorAssertions    Should(this PropertyInfoSelector propertyInfoSelector) => throw null!;
+// ReflectionExpectations.cs : public static TypeAssertions                    Should([NotNull] this Type subject) => throw null!;
+// ReflectionExpectations.cs : public static TypeSelectorAssertions            Should(this TypeSelector typeSelector) => throw null!;
+// ReflectionExpectations.cs : public static ConstructorInfoAssertions         Should([NotNull] this ConstructorInfo constructorInfo) => throw null!;
+// ReflectionExpectations.cs : public static MethodInfoAssertions              Should([NotNull] this MethodInfo methodInfo) => throw null!;
+// ReflectionExpectations.cs : public static MethodInfoSelectorAssertions      Should(this MethodInfoSelector methodSelector) => throw null!;
+// ReflectionExpectations.cs : public static PropertyInfoAssertions            Should([NotNull] this PropertyInfo propertyInfo) => throw null!;
+// ReflectionExpectations.cs : public static PropertyInfoSelectorAssertions    Should(this PropertyInfoSelector propertyInfoSelector) => throw null!;
