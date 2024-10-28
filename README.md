@@ -83,7 +83,7 @@ Instead, import the `FluentAssertions.Expectations` namespace. This namespace in
 
 #### Do static import `FluentAssertions.Expectations.Expectation`
  
-All overloads of the static `Expect` method are defined on the static class `FluentAssertions.Expectations.Expectation`. If you import this class statically as shown in the examples [above](#migrating-from-fluentassertions-should-syntax), then your code can use the `Expect` function directly.
+`Expect` is a static method defined on the static class `FluentAssertions.Expectations.Expectation`. If you import this class statically as shown in the examples [above](#migrating-from-fluentassertions-should-syntax), then your code can use the `Expect` function directly. For more information on this C# language feature, see **[`using static`](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/using-directive#static-modifier)**.
 
 ### Replacements
 
@@ -96,6 +96,20 @@ All overloads of the static `Expect` method are defined on the static class `Flu
 |Which, Subject|`..BeOfType<T>().Which.Should()..`|See [Replacing chains that use Which, Subject](#replacing-chains-that-use-which-subject)|
 
 ### Replacing chains that use Which, Subject
+
+#### TLDR
+
+```cs
+// before
+myDoc.Should().HaveElement("group") 
+    .Which.Should().HaveAttribute("version")
+    .Which.Value.Should().Be("11"); 
+
+// after
+Expect(myDoc).To().HaveElement("group").As(out var xGroup);
+Expect(xGroup).To().HaveAttribute("version").As(out var xAttr);
+Expect(xAttr.Value).To().Be("11");
+```
 
 FluentAssertions allows chaining indefinitely long sequences of cascading assertions via the `Which` and `Subject` properties of some assertion types. `Which` and `Subject` are synonyms and return the same value. These properties are present when the previous assertion implicitly extracts a different value from the original subject.
 
