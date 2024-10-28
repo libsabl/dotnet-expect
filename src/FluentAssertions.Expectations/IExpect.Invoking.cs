@@ -17,7 +17,7 @@ public static partial class IExpectExtensions
     /// on <paramref name="subject"/>. Intended for setting up assertions that invocation
     /// will throw an exception.
     /// </summary>
-    public static Expectation<Action> Invoking<T>(this IExpect _, T subject, Action<T> action)
+    public static IExpectation<Action> Invoking<T>(this IExpect _, T subject, Action<T> action)
     {
         ArgumentNullException.ThrowIfNull(subject, nameof(subject));
         ArgumentNullException.ThrowIfNull(action, nameof(action));
@@ -29,7 +29,7 @@ public static partial class IExpectExtensions
     /// on <paramref name="subject"/>. Intended for setting up assertions that invocation
     /// will throw an exception.
     /// </summary>
-    public static Expectation<Func<TResult>> Invoking<T, TResult>(this IExpect _, T subject, Func<T, TResult> action)
+    public static IExpectation<Func<TResult>> Invoking<T, TResult>(this IExpect _, T subject, Func<T, TResult> action)
     {
         ArgumentNullException.ThrowIfNull(subject, nameof(subject));
         ArgumentNullException.ThrowIfNull(action, nameof(action));

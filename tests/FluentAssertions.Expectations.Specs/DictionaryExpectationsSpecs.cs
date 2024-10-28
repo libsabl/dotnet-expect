@@ -76,7 +76,7 @@ public class DictionaryExpectationsSpecs
         };
 
         // Act: We are testing Expect(...).To() itself
-        var assertions = Expect<MyKvCollection, string, int>(tCollectionValue).To();
+        var assertions = Expect(tCollectionValue).To<MyKvCollection, string, int>();
 
         // Assert
         Expect(assertions).To().BeOfType<

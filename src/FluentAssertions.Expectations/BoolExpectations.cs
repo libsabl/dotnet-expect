@@ -4,17 +4,8 @@
 using FluentAssertions.Primitives;
 
 namespace FluentAssertions.Expectations;
-
-public static partial class Expectation
-{
-    /// <summary>Create an expectation about a <see cref="bool"/> subject</summary>
-    public static Expectation<bool> Expect(bool actual) => new(actual);
-
-    /// <summary>Create an expectation about a nullable <see cref="bool"/> subject</summary>
-    public static Expectation<bool?> Expect(bool? actual) => new(actual);
-}
-
-/// <summary>Extensions to <see cref="Expectation{T}"/> about Guid values</summary>
+ 
+/// <summary>Extensions to <see cref="IExpectation{T}"/> about <see cref="bool"/> values</summary>
 [DebuggerNonUserCode]
 public static class BoolExpectationExtensions
 {
@@ -26,10 +17,10 @@ public static class BoolExpectationExtensions
      */
 
     /// <summary>Compose assertions about the <see cref="bool"/> subject</summary>
-    public static BooleanAssertions To(this Expectation<bool> expectation)
+    public static BooleanAssertions To(this IExpectation<bool> expectation)
        => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the nullable <see cref="bool"/> subject</summary>
-    public static NullableBooleanAssertions To(this Expectation<bool?> expectation)
+    public static NullableBooleanAssertions To(this IExpectation<bool?> expectation)
        => expectation.Subject.Should();
 }

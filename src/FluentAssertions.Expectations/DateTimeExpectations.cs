@@ -4,41 +4,8 @@
 using FluentAssertions.Primitives;
 
 namespace FluentAssertions.Expectations;
-
-public static partial class Expectation
-{
-    /// <summary>Create an expectation about a <see cref="DateTime"/> subject</summary>
-    public static Expectation<DateTime> Expect(DateTime actual) => new(actual);
-
-    /// <summary>Create an expectation about a nullable <see cref="DateTime"/> subject</summary>
-    public static Expectation<DateTime?> Expect(DateTime? actual) => new(actual);
-
-    /// <summary>Create an expectation about a <see cref="DateTimeOffset"/> subject</summary>
-    public static Expectation<DateTimeOffset> Expect(DateTimeOffset actual) => new(actual);
-
-    /// <summary>Create an expectation about a nullable <see cref="DateTimeOffset"/> subject</summary>
-    public static Expectation<DateTimeOffset?> Expect(DateTimeOffset? actual) => new(actual);
-
-    /// <summary>Create an expectation about a <see cref="DateOnly"/> subject</summary>
-    public static Expectation<DateOnly> Expect(DateOnly actual) => new(actual);
-
-    /// <summary>Create an expectation about a nullable <see cref="DateOnly"/> subject</summary>
-    public static Expectation<DateOnly?> Expect(DateOnly? actual) => new(actual);
-
-    /// <summary>Create an expectation about a <see cref="TimeOnly"/> subject</summary>
-    public static Expectation<TimeOnly> Expect(TimeOnly actual) => new(actual);
-
-    /// <summary>Create an expectation about a nullable <see cref="TimeOnly"/> subject</summary>
-    public static Expectation<TimeOnly?> Expect(TimeOnly? actual) => new(actual);
-
-    /// <summary>Create an expectation about a <see cref="TimeSpan"/> subject</summary>
-    public static Expectation<TimeSpan> Expect(TimeSpan actual) => new(actual);
-
-    /// <summary>Create an expectation about a nullable <see cref="TimeSpan"/> subject</summary>
-    public static Expectation<TimeSpan?> Expect(TimeSpan? actual) => new(actual);
-}
-
-/// <summary>Extensions to <see cref="Expectation{T}"/> about date and time types</summary>
+ 
+/// <summary>Extensions to <see cref="IExpectation{T}"/> about date and time types</summary>
 [DebuggerNonUserCode]
 public static class DateTimeExpectationExtensions
 {
@@ -58,42 +25,42 @@ public static class DateTimeExpectationExtensions
     */
 
     /// <summary>Compose assertions about the <see cref="DateTime"/> subject</summary>
-    public static DateTimeAssertions To(this Expectation<DateTime> expectation)
+    public static DateTimeAssertions To(this IExpectation<DateTime> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the nullable <see cref="DateTime"/> subject</summary>
-    public static NullableDateTimeAssertions To(this Expectation<DateTime?> expectation)
+    public static NullableDateTimeAssertions To(this IExpectation<DateTime?> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the <see cref="DateTimeOffset"/> subject</summary>
-    public static DateTimeOffsetAssertions To(this Expectation<DateTimeOffset> expectation)
+    public static DateTimeOffsetAssertions To(this IExpectation<DateTimeOffset> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the nullable <see cref="DateTimeOffset"/> subject</summary>
-    public static NullableDateTimeOffsetAssertions To(this Expectation<DateTimeOffset?> expectation)
+    public static NullableDateTimeOffsetAssertions To(this IExpectation<DateTimeOffset?> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the <see cref="DateOnly"/> subject</summary>
-    public static DateOnlyAssertions To(this Expectation<DateOnly> expectation)
+    public static DateOnlyAssertions To(this IExpectation<DateOnly> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the nullable <see cref="DateOnly"/> subject</summary>
-    public static NullableDateOnlyAssertions To(this Expectation<DateOnly?> expectation)
+    public static NullableDateOnlyAssertions To(this IExpectation<DateOnly?> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the <see cref="TimeOnly"/> subject</summary>
-    public static TimeOnlyAssertions To(this Expectation<TimeOnly> expectation)
+    public static TimeOnlyAssertions To(this IExpectation<TimeOnly> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the nullable <see cref="TimeOnly"/> subject</summary>
-    public static NullableTimeOnlyAssertions To(this Expectation<TimeOnly?> expectation)
+    public static NullableTimeOnlyAssertions To(this IExpectation<TimeOnly?> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the <see cref="TimeSpan"/> subject</summary>
-    public static SimpleTimeSpanAssertions To(this Expectation<TimeSpan> expectation)
+    public static SimpleTimeSpanAssertions To(this IExpectation<TimeSpan> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the nullable <see cref="TimeSpan"/> subject</summary>
-    public static NullableSimpleTimeSpanAssertions To(this Expectation<TimeSpan?> expectation)
+    public static NullableSimpleTimeSpanAssertions To(this IExpectation<TimeSpan?> expectation)
         => expectation.Subject.Should();
 }

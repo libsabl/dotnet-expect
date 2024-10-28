@@ -5,76 +5,7 @@ using FluentAssertions.Numeric;
 
 namespace FluentAssertions.Expectations;
 
-public static partial class Expectation
-{
-    /// <summary>Create an expectation about a <see cref="int"/> subject</summary>
-    public static Expectation<int> Expect(int actual) => new(actual);
-
-    /// <summary>Create an expectation about a nullable <see cref="int"/> subject</summary>
-    public static Expectation<int?> Expect(int? actual) => new(actual);
-
-    /// <summary>Create an expectation about a <see cref="uint"/> subject</summary>
-    public static Expectation<uint> Expect(uint actual) => new(actual);
-
-    /// <summary>Create an expectation about a nullable <see cref="uint"/> subject</summary>
-    public static Expectation<uint?> Expect(uint? actual) => new(actual);
-
-    /// <summary>Create an expectation about a <see cref="decimal"/> subject</summary>
-    public static Expectation<decimal> Expect(decimal actual) => new(actual);
-
-    /// <summary>Create an expectation about a nullable <see cref="decimal"/> subject</summary>
-    public static Expectation<decimal?> Expect(decimal? actual) => new(actual);
-
-    /// <summary>Create an expectation about a <see cref="byte"/> subject</summary>
-    public static Expectation<byte> Expect(byte actual) => new(actual);
-
-    /// <summary>Create an expectation about a nullable <see cref="byte"/> subject</summary>
-    public static Expectation<byte?> Expect(byte? actual) => new(actual);
-
-    /// <summary>Create an expectation about a <see cref="sbyte"/> subject</summary>
-    public static Expectation<sbyte> Expect(sbyte actual) => new(actual);
-
-    /// <summary>Create an expectation about a nullable <see cref="sbyte"/> subject</summary>
-    public static Expectation<sbyte?> Expect(sbyte? actual) => new(actual);
-
-    /// <summary>Create an expectation about a <see cref="short"/> subject</summary>
-    public static Expectation<short> Expect(short actual) => new(actual);
-
-    /// <summary>Create an expectation about a nullable <see cref="short"/> subject</summary>
-    public static Expectation<short?> Expect(short? actual) => new(actual);
-
-    /// <summary>Create an expectation about a <see cref="ushort"/> subject</summary>
-    public static Expectation<ushort> Expect(ushort actual) => new(actual);
-
-    /// <summary>Create an expectation about a nullable <see cref="ushort"/> subject</summary>
-    public static Expectation<ushort?> Expect(ushort? actual) => new(actual);
-
-    /// <summary>Create an expectation about a <see cref="long"/> subject</summary>
-    public static Expectation<long> Expect(long actual) => new(actual);
-
-    /// <summary>Create an expectation about a nullable <see cref="long"/> subject</summary>
-    public static Expectation<long?> Expect(long? actual) => new(actual);
-
-    /// <summary>Create an expectation about a <see cref="ulong"/> subject</summary>
-    public static Expectation<ulong> Expect(ulong actual) => new(actual);
-
-    /// <summary>Create an expectation about a nullable <see cref="ulong"/> subject</summary>
-    public static Expectation<ulong?> Expect(ulong? actual) => new(actual);
-
-    /// <summary>Create an expectation about a <see cref="float"/> subject</summary>
-    public static Expectation<float> Expect(float actual) => new(actual);
-
-    /// <summary>Create an expectation about a nullable <see cref="float"/> subject</summary>
-    public static Expectation<float?> Expect(float? actual) => new(actual);
-
-    /// <summary>Create an expectation about a <see cref="double"/> subject</summary>
-    public static Expectation<double> Expect(double actual) => new(actual);
-
-    /// <summary>Create an expectation about a nullable <see cref="double"/> subject</summary>
-    public static Expectation<double?> Expect(double? actual) => new(actual);
-}
-
-/// <summary>Extensions to <see cref="Expectation{T}"/> about numeric types</summary>
+/// <summary>Extensions to <see cref="IExpectation{T}"/> about numeric types</summary>
 [DebuggerNonUserCode]
 public static class NumericExpectationExtensions
 {
@@ -106,90 +37,90 @@ public static class NumericExpectationExtensions
     */
 
     /// <summary>Compose assertions about the <see cref="int"/> subject</summary>
-    public static NumericAssertions<int> To(this Expectation<int> expectation)
+    public static NumericAssertions<int> To(this IExpectation<int> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the nullable <see cref="int"/> subject</summary>
-    public static NullableNumericAssertions<int> To(this Expectation<int?> expectation)
+    public static NullableNumericAssertions<int> To(this IExpectation<int?> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the <see cref="uint"/> subject</summary>
-    public static NumericAssertions<uint> To(this Expectation<uint> expectation)
+    public static NumericAssertions<uint> To(this IExpectation<uint> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the nullable <see cref="uint"/> subject</summary>
-    public static NullableNumericAssertions<uint> To(this Expectation<uint?> expectation)
+    public static NullableNumericAssertions<uint> To(this IExpectation<uint?> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the <see cref="decimal"/> subject</summary>
-    public static NumericAssertions<decimal> To(this Expectation<decimal> expectation)
+    public static NumericAssertions<decimal> To(this IExpectation<decimal> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the nullable <see cref="decimal"/> subject</summary>
-    public static NullableNumericAssertions<decimal> To(this Expectation<decimal?> expectation)
+    public static NullableNumericAssertions<decimal> To(this IExpectation<decimal?> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the <see cref="byte"/> subject</summary>
-    public static NumericAssertions<byte> To(this Expectation<byte> expectation)
+    public static NumericAssertions<byte> To(this IExpectation<byte> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the nullable <see cref="byte"/> subject</summary>
-    public static NullableNumericAssertions<byte> To(this Expectation<byte?> expectation)
+    public static NullableNumericAssertions<byte> To(this IExpectation<byte?> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the <see cref="sbyte"/> subject</summary>
-    public static NumericAssertions<sbyte> To(this Expectation<sbyte> expectation)
+    public static NumericAssertions<sbyte> To(this IExpectation<sbyte> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the nullable <see cref="sbyte"/> subject</summary>
-    public static NullableNumericAssertions<sbyte> To(this Expectation<sbyte?> expectation)
+    public static NullableNumericAssertions<sbyte> To(this IExpectation<sbyte?> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the <see cref="short"/> subject</summary>
-    public static NumericAssertions<short> To(this Expectation<short> expectation)
+    public static NumericAssertions<short> To(this IExpectation<short> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the nullable <see cref="short"/> subject</summary>
-    public static NullableNumericAssertions<short> To(this Expectation<short?> expectation)
+    public static NullableNumericAssertions<short> To(this IExpectation<short?> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the <see cref="ushort"/> subject</summary>
-    public static NumericAssertions<ushort> To(this Expectation<ushort> expectation)
+    public static NumericAssertions<ushort> To(this IExpectation<ushort> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the nullable <see cref="ushort"/> subject</summary>
-    public static NullableNumericAssertions<ushort> To(this Expectation<ushort?> expectation)
+    public static NullableNumericAssertions<ushort> To(this IExpectation<ushort?> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the <see cref="long"/> subject</summary>
-    public static NumericAssertions<long> To(this Expectation<long> expectation)
+    public static NumericAssertions<long> To(this IExpectation<long> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the nullable <see cref="long"/> subject</summary>
-    public static NullableNumericAssertions<long> To(this Expectation<long?> expectation)
+    public static NullableNumericAssertions<long> To(this IExpectation<long?> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the <see cref="ulong"/> subject</summary>
-    public static NumericAssertions<ulong> To(this Expectation<ulong> expectation)
+    public static NumericAssertions<ulong> To(this IExpectation<ulong> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the nullable <see cref="ulong"/> subject</summary>
-    public static NullableNumericAssertions<ulong> To(this Expectation<ulong?> expectation)
+    public static NullableNumericAssertions<ulong> To(this IExpectation<ulong?> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the <see cref="float"/> subject</summary>
-    public static NumericAssertions<float> To(this Expectation<float> expectation)
+    public static NumericAssertions<float> To(this IExpectation<float> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the nullable <see cref="float"/> subject</summary>
-    public static NullableNumericAssertions<float> To(this Expectation<float?> expectation)
+    public static NullableNumericAssertions<float> To(this IExpectation<float?> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the <see cref="double"/> subject</summary>
-    public static NumericAssertions<double> To(this Expectation<double> expectation)
+    public static NumericAssertions<double> To(this IExpectation<double> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the nullable <see cref="double"/> subject</summary>
-    public static NullableNumericAssertions<double> To(this Expectation<double?> expectation)
+    public static NullableNumericAssertions<double> To(this IExpectation<double?> expectation)
         => expectation.Subject.Should();
 }

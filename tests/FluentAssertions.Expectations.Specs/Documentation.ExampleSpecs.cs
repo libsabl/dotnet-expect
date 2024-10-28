@@ -4,6 +4,8 @@
 using FluentAssertions.Expectations;
 using Xunit.Sdk;
 
+#pragma warning disable IDE0130 // Namespace does not match folder structure
+
 namespace Documentation.Example;
 
 public class ExampleSpecs
@@ -42,4 +44,3 @@ public class ExampleSpecs
         public int SomeProperty { get; set; }
     }
 }
-

@@ -5,16 +5,7 @@ using FluentAssertions.Primitives;
 
 namespace FluentAssertions.Expectations;
 
-public static partial class Expectation
-{
-    /// <summary>Create an expectation about a <see cref="Guid"/> subject</summary>
-    public static Expectation<Guid> Expect(Guid actual) => new(actual);
-
-    /// <summary>Create an expectation about a nullable <see cref="Guid"/> subject</summary>
-    public static Expectation<Guid?> Expect(Guid? actual) => new(actual);
-}
-
-/// <summary>Extensions to <see cref="Expectation{T}"/> about Guid values</summary>
+/// <summary>Extensions to <see cref="IExpectation{T}"/> about Guid values</summary>
 [DebuggerNonUserCode]
 public static class GuidExpectationExtensions
 {
@@ -26,10 +17,10 @@ public static class GuidExpectationExtensions
      */
 
     /// <summary>Compose assertions about the <see cref="Guid"/> subject</summary>
-    public static GuidAssertions To(this Expectation<Guid> expectation)
+    public static GuidAssertions To(this IExpectation<Guid> expectation)
        => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the nullable <see cref="Guid"/> subject</summary>
-    public static NullableGuidAssertions To(this Expectation<Guid?> expectation)
+    public static NullableGuidAssertions To(this IExpectation<Guid?> expectation)
        => expectation.Subject.Should();
 }

@@ -8,7 +8,7 @@ public class ExpectationSpecs
     [Fact]
     public void Ctor_Sets_Subject()
     {
-        var exp = new Expectation<int>(2);
+        var exp = Expectation.Expect<int>(2);
         Expect(exp.Subject).To().Be(2);
     }
 }

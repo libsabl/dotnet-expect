@@ -5,13 +5,7 @@ using FluentAssertions.Primitives;
 
 namespace FluentAssertions.Expectations;
 
-public static partial class Expectation
-{
-    /// <summary>Create an expectation about a <see cref="string"/> subject</summary>
-    public static Expectation<string> Expect(string? actual) => new(actual!);
-}
-
-/// <summary>Extensions to <see cref="Expectation{T}"/> about a string</summary>
+/// <summary>Extensions to <see cref="IExpectation{T}"/> about a string</summary>
 [DebuggerNonUserCode]
 public static class StringExpectationExtensions
 {
@@ -22,6 +16,6 @@ public static class StringExpectationExtensions
      */
 
     /// <summary>Compose assertions about the <see cref="string"/> subject</summary>
-    public static StringAssertions To(this Expectation<string> expectation)
+    public static StringAssertions To(this IExpectation<string> expectation)
        => expectation.Subject.Should();
 }
