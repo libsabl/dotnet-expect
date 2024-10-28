@@ -9,7 +9,10 @@ namespace FluentAssertions.Expectations;
 [DebuggerNonUserCode]
 public static partial class Expectation
 {
-    public static IExpectation<T> Expect<T>(T? actual) => new ExpectationValue<T>(actual!);
+    /// <summary>
+    /// Compose assertions about <paramref name="subject"/>
+    /// </summary>
+    public static IExpectation<T> Expect<T>(T? subject) => new ExpectationValue<T>(subject!);
 
     [DebuggerNonUserCode]
     private class ExpectationValue<T>(T subject) : IExpectation<T>
