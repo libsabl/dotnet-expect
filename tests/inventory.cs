@@ -35,7 +35,7 @@ public static StreamAssertions                  Should([NotNull] this Stream act
 public static BufferedStreamAssertions          Should([NotNull] this BufferedStream actualValue) => throw null!;
 // BoolExpectations.cs       : public static BooleanAssertions                  Should(this bool actualValue) => throw null!;
 // BoolExpectations.cs       : public static NullableBooleanAssertions          Should(this bool? actualValue) => throw null!;
-public static HttpResponseMessageAssertions     Should([NotNull] this HttpResponseMessage actualValue) => throw null!;
+// HttpResponseExpectations.cs : public static HttpResponseMessageAssertions     Should([NotNull] this HttpResponseMessage actualValue) => throw null!;
 // GuidExpectations.cs       : public static GuidAssertions                     Should(this Guid actualValue) => throw null!;
 // GuidExpectations.cs       : public static NullableGuidAssertions             Should(this Guid? actualValue) => throw null!;
 // CollectionExpectations.cs : public static GenericCollectionAssertions<T>     Should<T>([NotNull] this IEnumerable<T> actualValue) => throw null!;
@@ -51,7 +51,7 @@ public static HttpResponseMessageAssertions     Should([NotNull] this HttpRespon
 // DateTimeExpectations.cs   : public static NullableDateOnlyAssertions         Should(this DateOnly? actualValue) => throw null!;
 // DateTimeExpectations.cs   : public static TimeOnlyAssertions                 Should(this TimeOnly actualValue) => throw null!;
 // DateTimeExpectations.cs   : public static NullableTimeOnlyAssertions         Should(this TimeOnly? actualValue) => throw null!;
-public static ComparableTypeAssertions<T>       Should<T>([NotNull] this IComparable<T> comparableValue) => throw null!;
+// IComparableExpectations.cs: public static ComparableTypeAssertions<T>        Should<T>([NotNull] this IComparable<T> comparableValue) => throw null!;
 // NumericExpectations.cs    : public static NumericAssertions<int>             Should(this int actualValue) => throw null!;
 // NumericExpectations.cs    : public static NullableNumericAssertions<int>     Should(this int? actualValue) => throw null!;
 // NumericExpectations.cs    : public static NumericAssertions<uint>            Should(this uint actualValue) => throw null!;
