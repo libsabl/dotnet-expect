@@ -19,7 +19,7 @@ public static partial class IExpectExtensions
     /// on <paramref name="subject"/>. Intended for setting up assertions that awaiting the
     /// returned task with throw an exception.
     /// </summary>
-    public static Expectation<Func<Task>> Awaiting<T>(this IExpect _, T subject, Func<T, Task> action)
+    public static IExpectation<Func<Task>> Awaiting<T>(this IExpect _, T subject, Func<T, Task> action)
     {
         ArgumentNullException.ThrowIfNull(subject, nameof(subject));
         ArgumentNullException.ThrowIfNull(action, nameof(action));
@@ -31,7 +31,7 @@ public static partial class IExpectExtensions
     /// on <paramref name="subject"/>. Intended for setting up assertions that awaiting the
     /// returned task with throw an exception.
     /// </summary>
-    public static Expectation<Func<Task<TResult>>> Awaiting<T, TResult>(this IExpect _, T subject, Func<T, Task<TResult>> action)
+    public static IExpectation<Func<Task<TResult>>> Awaiting<T, TResult>(this IExpect _, T subject, Func<T, Task<TResult>> action)
     {
         ArgumentNullException.ThrowIfNull(subject, nameof(subject));
         ArgumentNullException.ThrowIfNull(action, nameof(action));
@@ -43,7 +43,7 @@ public static partial class IExpectExtensions
     /// on <paramref name="subject"/>. Intended for setting up assertions that awaiting the
     /// returned task with throw an exception.
     /// </summary>
-    public static Expectation<Func<Task>> Awaiting<T>(this IExpect _, T subject, Func<T, ValueTask> action)
+    public static IExpectation<Func<Task>> Awaiting<T>(this IExpect _, T subject, Func<T, ValueTask> action)
     {
         ArgumentNullException.ThrowIfNull(subject, nameof(subject));
         ArgumentNullException.ThrowIfNull(action, nameof(action));
@@ -55,7 +55,7 @@ public static partial class IExpectExtensions
     /// on <paramref name="subject"/>. Intended for setting up assertions that awaiting the
     /// returned task with throw an exception.
     /// </summary>
-    public static Expectation<Func<Task<TResult>>> Awaiting<T, TResult>(this IExpect _, T subject, Func<T, ValueTask<TResult>> action)
+    public static IExpectation<Func<Task<TResult>>> Awaiting<T, TResult>(this IExpect _, T subject, Func<T, ValueTask<TResult>> action)
     {
         ArgumentNullException.ThrowIfNull(subject, nameof(subject));
         ArgumentNullException.ThrowIfNull(action, nameof(action));

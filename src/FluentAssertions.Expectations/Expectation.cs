@@ -7,18 +7,37 @@ namespace FluentAssertions.Expectations;
 /// Container for all overloads of <c>static Expect(...)</c>
 /// </summary>
 [DebuggerNonUserCode]
-public static partial class Expectation { }
+public static partial class Expectation
+{
+    public static IExpectation<T> Expect<T>(T? actual) => new ExpectationValue<T>(actual!);
+
+    [DebuggerNonUserCode]
+    private class ExpectationValue<T>(T subject) : IExpectation<T>
+    {
+        public T Subject { get; } = subject;
+
+        object? IExpectation.Subject => this.Subject;
+    }
+}
 
 /// <summary>
-/// An expectation about a given <see cref="Subject"/>
+/// An expectation about a generic <see cref="object"/> <see cref="Subject"/>
 /// </summary>
-/// <typeparam name="T"></typeparam>
-/// <param name="subject"></param>
-[DebuggerNonUserCode]
-public class Expectation<T>(T subject)
+public interface IExpectation
 {
     /// <summary>
     /// The subject of the expectation
     /// </summary>
-    public T Subject { get; } = subject;
+    object? Subject { get; }
+}
+
+/// <summary>
+/// An expectation about a given <see cref="Subject"/> of a specific type
+/// </summary>
+public interface IExpectation<out T> : IExpectation
+{
+    /// <summary>
+    /// The subject of the expectation
+    /// </summary>
+    new T Subject { get; }
 }

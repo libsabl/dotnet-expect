@@ -6,25 +6,10 @@ using System.Collections.Generic;
 
 namespace FluentAssertions.Expectations;
 
-public static partial class Expectation
-{
-    /// <summary>Create an expectation about a <see cref="IEnumerable{T}"/> subject</summary>
-    public static CollectionExpectation<T> Expect<T>(IEnumerable<T> actual)
-        => new(actual);
-
-    /// <summary>Create an expectation about a <see cref="IEnumerable{T}"/> of <see cref="string"/> subject</summary>
-    public static CollectionExpectation<string> Expect(IEnumerable<string> actual)
-        => new(actual);
-}
-
-/// <summary>An <see cref="Expectation{T}"/> about a <see cref="IEnumerable{T}"/></summary>
-[DebuggerNonUserCode]
-public class CollectionExpectation<T>(IEnumerable<T> actual) : Expectation<IEnumerable<T>>(actual) { }
-
-/// <summary>Extensions to <see cref="CollectionExpectation{T}"/></summary>
+/// <summary>Extensions to <see cref="IExpectation{T}"/> about <see cref="IEnumerable{T}"/> values</summary>
 [DebuggerNonUserCode]
 public static class CollectionExpectationExtensions
-{    
+{
     /*
     * See Should() overloads:
     * 
@@ -33,10 +18,10 @@ public static class CollectionExpectationExtensions
     */
 
     /// <summary>Compose assertions about the <see cref="IEnumerable{T}"/> subject</summary>
-    public static StringCollectionAssertions To(this CollectionExpectation<string> expectation)
+    public static StringCollectionAssertions To(this IExpectation<IEnumerable<string>> expectation)
         => expectation.Subject.Should();
 
     /// <summary>Compose assertions about the <see cref="IEnumerable{T}"/> of <see cref="string"/> subject</summary>
-    public static GenericCollectionAssertions<T> To<T>(this CollectionExpectation<T> expectation)
+    public static GenericCollectionAssertions<T> To<T>(this IExpectation<IEnumerable<T>> expectation)
         => expectation.Subject.Should();
 }
